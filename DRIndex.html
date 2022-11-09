@@ -11,8 +11,14 @@
   </head>
   <body>
         <h1>DR Record Collection</h1>
-        <div id="app">
-          
+        <div id="app" style="margin-right: 1000px">
+          <div class="input-group">
+            <input  type="text" class="form-control" placeholder="Search Record" aria-label="Record" aria-describedby="basic-addon2" v-model="title1">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" v-on:click="filterByRecords(title1)">Search</button>
+              <button class="btn btn-outline-secondary" type="button" v-on:click="getAll()">Reset</button>
+            </div>
+          </div>
           <table class="table table-dark table-striped">
             <tr>
                 <th>Title</th>

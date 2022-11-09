@@ -6,7 +6,9 @@ const url = "http://localhost:5164/api/Records"
 Vue.createApp({
     data() {
         return {
-            records: []
+            records: [],
+            title1: null
+            
         }
     },
     async created() {
@@ -17,5 +19,22 @@ Vue.createApp({
         } catch (error) {
             this.records = error.records
         }
+    },
+    methods: {      
+      filterByRecords(title1){
+        console.log("Title: " + title1)
+        this.records = this.records.filter(r => r.title.includes(title1))
+        console.log("Records: " + this.records)
+      },
+      async getAll() {
+        try {
+            console.log(url)
+            const response = await axios.get(url)
+            this.records = await response.data
+            console.log(this.records)
+        } catch (ex) {
+            alert(ex.message) // https://www.w3schools.com/js/js_popup.asp
+        }}
     }
+    
 }).mount("#app")
